@@ -40,7 +40,7 @@ function pswc_custom_woocommerce_get_catalog_ordering_args( $args ) {
             );
             $args['order'] = 'ASC';
             $args['meta_key'] = '_wc_average_rating';
-        }
+        } 
     }
 
     if( $pswc_sort_term['title_ascending'] == 'yes' ) {
