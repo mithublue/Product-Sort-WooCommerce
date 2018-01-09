@@ -1,5 +1,5 @@
-### WC Product Sort ###
-Contributors: mithublue, cybercraftit
+=== WC Product Sort ===
+Contributors: cybercraftit, mithublue
 Tags: WooCommerce, product, product sort, sort, wc product sort, wc product, wc sort, woocommerce sort, price sort, date sort, alphebatic sort, price, popularity, rating, average rating, options, custom sort, title sort, date sort, ascending, descending, sort options, advanced sort, sort list, product list, archive lost, sort archive, wc custom sort,woocommerce custom sort
 Requires at least: 3.0.1
 Tested up to: 4.9.1
@@ -9,11 +9,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Add custom sort options to your product sort dropdown in shop and product archive/list pages
 
-## Description ##
+== Description ==
 
 Add custom sort options to your product sort dropdown in shop and product archive/list pages
 
-# Features #
+= Features =
 
 You can have sort options in the sort dropdown. You can sort products by
 
@@ -32,7 +32,7 @@ Besides , in admin panel , you will have
 * Options to modify the label of sorting
 * Activate/deactivate any sorting type
 
-## Installation ##
+== Installation ==
 
 This section describes how to install the plugin and get it working.
 
@@ -40,13 +40,13 @@ This section describes how to install the plugin and get it working.
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
  
-## Screenshots ##
+== Screenshots ==
 
 1. screenshot-1
 2. screenshot-2
 
-## Changelog ##
+== Changelog ==
 
-# 1.0 #
+= 1.0 =
 
 1. Plugin Initial version

@@ -1,6 +1,6 @@
 <?php
 /*
- * Plugin Name: Product Sort WooCommerce
+ * Plugin Name: WC Product Sort
  * Description: A plugin to let users have different sorting options along with default ones
  * Plugin URI:
  * Author URI: http://cybercraftit.com/
@@ -105,4 +105,15 @@ class PSWC_Init{/**
 }
 
 PSWC_Init::get_instance();
+
+function pswc_get_sort_term() {
+    global $pswc_sort_term;
+
+    if( !is_array( $pswc_sort_term ) ) {
+        $pswc_sort_term = get_option( 'pswc_sort_term' );
+    }
+
+    is_array( $pswc_sort_term ) ? '' : $pswc_sort_term = array();
+    return $pswc_sort_term;
+}
 

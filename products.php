@@ -3,10 +3,12 @@
 add_filter( 'woocommerce_get_catalog_ordering_args', 'pswc_custom_woocommerce_get_catalog_ordering_args' );
 function pswc_custom_woocommerce_get_catalog_ordering_args( $args ) {
 
-    global $pswc_sort_term,$pswc_sort_label;
+    global $pswc_sort_label;
 
     if( empty( $pswc_sort_term ) ) {
-        $pswc_sort_term = get_option( 'pswc_sort_term' );
+        //$pswc_sort_term = get_option( 'pswc_sort_term' );
+        $pswc_sort_term = pswc_get_sort_term();
+        $pswc_sort_term = is_array( $pswc_sort_term ) ? $pswc_sort_term : array();
     }
 
     if( empty( $pswc_sort_label ) ) {
@@ -17,7 +19,7 @@ function pswc_custom_woocommerce_get_catalog_ordering_args( $args ) {
 
 
     //default
-    if( $pswc_sort_term['popularity'] == 'yes' ) {
+    if( isset( $pswc_sort_term['popularity'] ) && $pswc_sort_term['popularity'] == 'yes' ) {
         if ( 'popularity' == $orderby_slug ) {
             return $args;
         }
@@ -25,14 +27,14 @@ function pswc_custom_woocommerce_get_catalog_ordering_args( $args ) {
     }
 
     //default
-    if( $pswc_sort_term['rating'] == 'yes' ) {
+    if( isset( $pswc_sort_term['rating'] ) && $pswc_sort_term['rating'] == 'yes' ) {
         if ( 'rating' == $orderby_slug ) {
             return $args;
         }
 
     }
 
-    if( $pswc_sort_term['rating-asc'] == 'yes' ) {
+    if( isset( $pswc_sort_term['rating-asc'] ) && $pswc_sort_term['rating-asc'] == 'yes' ) {
         if ( 'rating-asc' == $orderby_slug ) {
             $args['orderby'] = array(
                 'meta_value_num' => 'ASC',
@@ -40,10 +42,10 @@ function pswc_custom_woocommerce_get_catalog_ordering_args( $args ) {
             );
             $args['order'] = 'ASC';
             $args['meta_key'] = '_wc_average_rating';
-        } 
+        }
     }
 
-    if( $pswc_sort_term['title_ascending'] == 'yes' ) {
+    if( isset( $pswc_sort_term['title_ascending'] ) && $pswc_sort_term['title_ascending'] == 'yes' ) {
         if ( 'title_ascending' == $orderby_slug ) {
             $args['orderby'] = $pswc_sort_label['title_ascending'];
             $args['order'] = 'ASC';
@@ -51,7 +53,7 @@ function pswc_custom_woocommerce_get_catalog_ordering_args( $args ) {
         }
     }
 
-    if( $pswc_sort_term['title_descending'] == 'yes' ) {
+    if( isset( $pswc_sort_term['title_descending'] ) && $pswc_sort_term['title_descending'] == 'yes' ) {
         if ( 'title_descending' == $orderby_slug ) {
             $args['orderby'] = 'title';
             $args['order'] = 'DESC';
@@ -59,7 +61,7 @@ function pswc_custom_woocommerce_get_catalog_ordering_args( $args ) {
         }
     }
 
-    if( $pswc_sort_term['date'] == 'yes' ) {
+    if( isset( $pswc_sort_term['date'] ) && $pswc_sort_term['date'] == 'yes' ) {
         if ( 'date' == $orderby_slug ) {
             $args['orderby'] = 'date';
             $args['order'] = 'ASC';
@@ -67,7 +69,7 @@ function pswc_custom_woocommerce_get_catalog_ordering_args( $args ) {
         }
     }
 
-    if( $pswc_sort_term['date-desc'] == 'yes' ) {
+    if( isset( $pswc_sort_term['date-desc'] ) && $pswc_sort_term['date-desc'] == 'yes' ) {
         if ( 'date-desc' == $orderby_slug ) {
             $args['orderby'] = 'date';
             $args['order'] = 'DESC';
@@ -75,7 +77,7 @@ function pswc_custom_woocommerce_get_catalog_ordering_args( $args ) {
         }
     }
 
-    if( $pswc_sort_term['price'] == 'yes' ) {
+    if( isset( $pswc_sort_term['price'] ) && $pswc_sort_term['price'] == 'yes' ) {
         if ( 'price' == $orderby_slug ) {
             $args['orderby'] = 'price';
             $args['order'] = 'ASC';
@@ -83,7 +85,7 @@ function pswc_custom_woocommerce_get_catalog_ordering_args( $args ) {
         }
     }
 
-    if( $pswc_sort_term['price-desc'] == 'yes' ) {
+    if( isset( $pswc_sort_term['price-desc'] ) && $pswc_sort_term['price-desc'] == 'yes' ) {
         if ( 'price-desc' == $orderby_slug ) {
             $args['orderby'] = 'price';
             $args['order'] = 'DESC';
@@ -97,17 +99,15 @@ add_filter( 'woocommerce_default_catalog_orderby_options', 'pswc_custom_woocomme
 add_filter( 'woocommerce_catalog_orderby', 'pswc_custom_woocommerce_catalog_orderby' );
 function pswc_custom_woocommerce_catalog_orderby( $sortby ) {
 
-    global $pswc_sort_term,$pswc_sort_label;
-
-    if( empty( $pswc_sort_term ) ) {
-        $pswc_sort_term = get_option( 'pswc_sort_term' );
-    }
+    global $pswc_sort_label;
+    $pswc_sort_term = pswc_get_sort_term();
 
     if( empty( $pswc_sort_label ) ) {
         $pswc_sort_label = get_option( 'pswc_sort_label' );
     }
 
-
+    if( empty( $pswc_sort_term ) ) return $sortby;
+    
     unset($sortby['date']);
     unset($sortby['price']);
     unset($sortby['price-desc']);
