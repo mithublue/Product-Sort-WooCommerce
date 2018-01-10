@@ -107,7 +107,7 @@ function pswc_custom_woocommerce_catalog_orderby( $sortby ) {
     }
 
     if( empty( $pswc_sort_term ) ) return $sortby;
-    
+
     unset($sortby['date']);
     unset($sortby['price']);
     unset($sortby['price-desc']);
