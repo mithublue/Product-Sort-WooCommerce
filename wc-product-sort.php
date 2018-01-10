@@ -4,7 +4,7 @@
  * Description: A plugin to let users have different sorting options along with default ones
  * Plugin URI:
  * Author URI: http://cybercraftit.com/
- * Author: Mithu A Quayium
+ * Author: zenithx
  * Text Domain: pswc
  * Domain Path: /languages
  * Version: 1.0

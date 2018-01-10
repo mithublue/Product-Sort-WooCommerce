@@ -1,5 +1,5 @@
 === WC Product Sort ===
-Contributors: cybercraftit, mithublue
+Contributors: zenithx
 Tags: WooCommerce, product, product sort, sort, wc product sort, wc product, wc sort, woocommerce sort, price sort, date sort, alphebatic sort, price, popularity, rating, average rating, options, custom sort, title sort, date sort, ascending, descending, sort options, advanced sort, sort list, product list, archive lost, sort archive, wc custom sort,woocommerce custom sort
 Requires at least: 3.0.1
 Tested up to: 4.9.1
